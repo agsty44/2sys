@@ -12,7 +12,7 @@ $connection = new mysqli($server, $SQLuser, $SQLpass, $db);
 //Check the connection.
 if ($connection->connect_error) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Could not connect to database! error{new_mysqli_failed}'); //use an error{} flag - this helps to debug
+    echo('\nCould not connect to database! error{new_mysqli_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
@@ -35,7 +35,7 @@ $retrieveHash->bind_param('s', $user);
 //Check statement validity
 if (!$retrieveHash) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
+    echo('\nError with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
@@ -48,7 +48,7 @@ $retrieveHash->close(); //Close, as we will need another query later in this scr
 
 if ($hashedPass = '') {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Incorrect login details!');
+    echo('\nIncorrect login details!');
     die(); //Die, as this is more likely to be an issue with setup
     //or if the user exists, not a bug or connection issue with phpMA or mySQL. 
     //No need to report an issue with the site using debug techniques (error{FLAG_NAME})
@@ -59,7 +59,7 @@ $userVerified = password_verify($pass, $hashedPass);
 
 if (!$userVerified) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Incorrect login details!');
+    echo('\nIncorrect login details!');
     die(); //Wrong password - unlucky mate! Go try again why don't you
     //We use the exact same 'fail' message in both cases - 
     //this means any MISCREANTS attacking the site can't tell if the username tested exists or not.
@@ -79,7 +79,7 @@ $retrieveUserID->bind_param('s', $user);
 
 if (!$retriveUserID) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
+    echo('\nError with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
@@ -97,7 +97,7 @@ $readAccessLevel->bind_param('i', $userID); //Note - binding an INT this time as
 
 if (!$readAccessLevel) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
+    echo('\nError with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
