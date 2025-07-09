@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="loginform.css">
+    <title>2sys</title>
+</head>
+
+<body>
+
+    <!--div to box the whole form-->
+    <div class="form-container">
+
+        <!--login form-->
+        <form action="index.php" method="POST">
+
+            <!--username box-->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+
+            <!--password box-->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!--login button-->
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
+    </div>
+</body>
