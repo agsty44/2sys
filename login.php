@@ -10,6 +10,7 @@ include('/home/agsty/Programming/2sys/universal.php');
 if (isset($_COOKIE['dXNlcm5hbWVDb29raWU=']) && isset($_COOKIE['cGFzc3dvcmRDb29raWU='])) {
     //the user already has login details set, so we should check those first.
     include('/home/agsty/Programming/2sys/retrieveUserInfoCookie.php');
+    goToHomePanel(); //Call the function to sent them to the appropriate home page.
 }
 
 //Load login details (email/key)
@@ -25,29 +26,6 @@ $pass = sanitiseStrings($pass);
 //2. Retrieve their accessLevel and UID.
 
 include('/home/agsty/Programming/2sys/retrieveUserInfo.php');
-
-switch ($accessPermission) {
-    case 'Admin':
-        header('Location: /home/agsty/Programming/2sys/Admin/panel.php');
-        establishLoginCookies();
-        die();
-    case 'Parent':
-        header('Location: /home/agsty/Programming/2sys/Parents/panel.php');
-        establishLoginCookies();
-        die();
-    case 'Student':
-        header('Location: /home/agsty/Programming/2sys/Students/panel.php');
-        establishLoginCookies();
-        die();
-    case 'Teacher':
-        header('Location: /home/agsty/Programming/2sys/Teachers/panel.php');
-        establishLoginCookies();
-        die();
-    default:
-        header('Locations: /home/agsty/Programming/2sys/index.html'); //Something is wrong here, so we should send them back to login.
-        //We also dont set cookies as this user is bugged.
-        echo('A problem occured with your account. Contact the admins. error{access_level_not_real}');
-        die();
-}
-
+goToHomePanel(); //same as the earlier function call, just that this is used if no cookies were found.
+//cookies are set by the goToHomePanel function calling establishLoginCookies.
 ?>
