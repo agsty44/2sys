@@ -30,7 +30,7 @@ if ($hashedPass = '') {
 
 //Check the password.
 $userVerified = password_verify($pass, $hashedPass);
-if (!$userVerified) {
+if ($userVerified) {
     include('/home/agsty/Programming/2sys/index.html');
     echo('<br>Incorrect login details!');
     die(); //Wrong password - unlucky mate! Go try again why don't you
@@ -52,7 +52,7 @@ $retrieveUserID->bind_param('s', $user);
 
 if (!$retriveUserID) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
+    echo('<br>Error with prepared statement! error{retrieve_uid_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
@@ -69,7 +69,7 @@ $readAccessLevel->bind_param('i', $userID); //Note - binding an INT this time as
 
 if (!$readAccessLevel) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
+    echo('<br>Error with prepared statement! error{retrieve_access_level_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
 }
