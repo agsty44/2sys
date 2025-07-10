@@ -1,0 +1,22 @@
+--- LOGINS ---
+readOnlyLogin.php - this provides the DB connection for the ReadOnly account - used for, you guessed it, reading records ONLY.
+inserterLogin.php - same, but Inserter account - it can create new records, but not modify/read.
+updaterLogin.php - again, but Updater account - it can change records, but not read/create.
+
+--- READ DETAILS ---
+retrieveUserInfo.php - retrieve user info when the password is in PLAINTEXT - such as when it is retrieved from the login form - it is verified with password_verify().
+retrieveUserInfoCookie.php - retrieve user info when the password is HASHED (meaning IN THE COOKIE) - this is used when the user should already be signed in.
+
+--- UNIVERSAL ---
+universal.php - contains utilities such as sanitiseStrings() - this is used for cleaning user input.
+
+--- COOKIE NAMES ---
+dXNlcm5hbWVDb29raWU= - the username cookie
+cGFzc3dvcmRDb29raWU= - password cookie
+
+--- IMPORTANT DIRECTORIES ---
+/home/agsty/Programming/2sys/ - the webroot. home to all the project files. :D
+./Admin - the admin panel
+./Parents - the parent panel
+./Students - the student panel
+./Teachers - the teacher panel
