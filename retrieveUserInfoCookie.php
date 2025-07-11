@@ -52,7 +52,7 @@ $retrieveUserID = $connection->prepare('SELECT `UserID` FROM `Accounts` WHERE `U
 $retrieveUserID->bind_param('s', $user);
 //This is safe as we have VERIFIED the username AND its password.
 
-if (!$retriveUserID) {
+if (!$retrieveUserID) {
     include('/home/agsty/Programming/2sys/index.html');
     echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
