@@ -35,23 +35,23 @@ function goToHomePanel() {
 
     switch ($accessPermission) {
         case 'Admin':
-            header('Location: /home/agsty/Programming/2sys/Admin/panel.php');
+            header('Location: http://localhost//Admin/panel.php');
             establishLoginCookies();
             die();
         case 'Parent':
-            header('Location: /home/agsty/Programming/2sys/Parents/panel.php');
+            header('Location: http://localhost//Parents/panel.php');
             establishLoginCookies();
             die();
         case 'Student':
-            header('Location: /home/agsty/Programming/2sys/Students/panel.php');
+            header('Location: http://localhost//Students/panel.php');
             establishLoginCookies();
             die();
         case 'Teacher':
-            header('Location: /home/agsty/Programming/2sys/Teachers/panel.php');
+            header('Location: http://localhost//Teachers/panel.php');
             establishLoginCookies(); //Either set for first time OR refresh cookies.
             die();
         default:
-            header('Locations: /home/agsty/Programming/2sys/index.html'); //Something is wrong here, so we should send them back to login.
+            header('Location: http://localhost/index.html'); //Something is wrong here, so we should send them back to login.
             echo('A problem occured with your account. Contact the admins. error{access_level_not_real}');
             die();
 }

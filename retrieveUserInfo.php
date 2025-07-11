@@ -3,7 +3,7 @@
 //NOTE - use retrieveUserInfoCookie if they are supposed to be logged in already!
 
 //Prepare a statement to withdraw the user's hash (if it exists) before we verify it.
-$retrieveHash = $connection->prepare('SELECT `PassHash` FROM `Accounts` WHERE `Username` LIKE ?');
+$retrieveHash = $connection->prepare('SELECT `PassHash` FROM `Accounts` WHERE `Username` = ?');
 $retrieveHash->bind_param('s', $user);
 
 //Check statement validity
@@ -18,19 +18,21 @@ if (!$retrieveHash) {
 $retrieveHash->execute();
 $retrieveHash->bind_result($hashedPass);
 $retrieveHash->fetch();
-$retrieveHash->close(); //Close, as we will need another query later in this script (also more secure + save resources)
 
-if ($hashedPass = '') {
+echo $user . "<br>" . $pass . "<br>" . $hashedPass;
+
+if (!isset($hashedPass)) {
     include('/home/agsty/Programming/2sys/index.html');
-    echo('<br>Incorrect login details!');
+    echo('<br>Incorrect login details! name');
     die(); //Die, as this is more likely to be an issue with setup
     //or if the user exists, not a bug or connection issue with phpMA or mySQL. 
     //No need to report an issue with the site using debug techniques (error{FLAG_NAME})
 }
+$retrieveHash->close(); //Close, as we will need another query later in this script (also more secure + save resources)
 
 //Check the password.
 $userVerified = password_verify($pass, $hashedPass);
-if ($userVerified) {
+if (!$userVerified) {
     include('/home/agsty/Programming/2sys/index.html');
     echo('<br>Incorrect login details!');
     die(); //Wrong password - unlucky mate! Go try again why don't you
@@ -50,7 +52,7 @@ $retrieveUserID = $connection->prepare('SELECT `UserID` FROM `Accounts` WHERE `U
 $retrieveUserID->bind_param('s', $user);
 //This is safe as we have VERIFIED the username AND its password.
 
-if (!$retriveUserID) {
+if (!$retrieveUserID) {
     include('/home/agsty/Programming/2sys/index.html');
     echo('<br>Error with prepared statement! error{retrieve_uid_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.

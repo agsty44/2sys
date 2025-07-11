@@ -15,7 +15,7 @@ if (isset($_COOKIE['dXNlcm5hbWVDb29raWU=']) && isset($_COOKIE['cGFzc3dvcmRDb29ra
 
 //Load login details (email/key)
 $user = $_POST['username'];
-$pass = $_POST['pass'];
+$pass = $_POST['password'];
 
 //Call sanitiser from universal.php
 $user = sanitiseStrings($user);
