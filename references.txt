@@ -11,8 +11,8 @@ retrieveUserInfoCookie.php - retrieve user info when the password is HASHED (mea
 universal.php - contains utilities such as sanitiseStrings() - this is used for cleaning user input.
 
 --- COOKIE NAMES ---
-dXNlcm5hbWVDb29raWU= - the username cookie
-cGFzc3dvcmRDb29raWU= - password cookie
+dXNlcm5hbWVDb29raWU - the username cookie
+cGFzc3dvcmRDb29raWU - password cookie
 
 --- IMPORTANT DIRECTORIES ---
 /home/agsty/Programming/2sys/ - the webroot. home to all the project files. :D

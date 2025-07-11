@@ -7,7 +7,7 @@ include('/home/agsty/Programming/2sys/readOnlyLogin.php');
 include('/home/agsty/Programming/2sys/universal.php');
 
 //Before doing anything, we should check for already existing login details.
-if (isset($_COOKIE['dXNlcm5hbWVDb29raWU=']) && isset($_COOKIE['cGFzc3dvcmRDb29raWU='])) {
+if (isset($_COOKIE['dXNlcm5hbWVDb29raWU']) && isset($_COOKIE['cGFzc3dvcmRDb29raWU'])) {
     //the user already has login details set, so we should check those first.
     include('/home/agsty/Programming/2sys/retrieveUserInfoCookie.php');
     goToHomePanel(); //Call the function to sent them to the appropriate home page.
