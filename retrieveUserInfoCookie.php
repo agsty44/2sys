@@ -9,7 +9,7 @@ $retrieveHash->bind_param('s', $user);
 
 //Check statement validity
 if (!$retrieveHash) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
@@ -22,9 +22,9 @@ $retrieveHash->fetch();
 $retrieveHash->close(); //Close, as we will need another query later in this script (also more secure + save resources)
 
 if ($hashedPass = '') {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     unsetCookies(); //This looks to be an error, however every file which calls this script
-    //will also have '/home/agsty/Programming/2sys/universal.php' and its functions already included
+    //will also have 'http://localhost/universal.php' and its functions already included
     //so this function will be available to call.
     echo('<br>Incorrect login details!');
     die(); //Die, as this is more likely to be an issue with setup
@@ -37,7 +37,7 @@ if ($hashedPass != $pass) {
     //something aint quite right with the cookies here, so we are going to CLEAR them
     //and then send the user to login.
     unsetCookies();
-    header('Location: /home/agsty/Programming/2sys/index.html');
+    header('Location: http://localhost/index.html');
     die();
 }
 
@@ -53,7 +53,7 @@ $retrieveUserID->bind_param('s', $user);
 //This is safe as we have VERIFIED the username AND its password.
 
 if (!$retrieveUserID) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
@@ -70,7 +70,7 @@ $readAccessLevel = $connection->prepare('SELECT `AccessLevel` FROM `Accounts` WH
 $readAccessLevel->bind_param('i', $userID); //Note - binding an INT this time as that is what UserID is stored as.
 
 if (!$readAccessLevel) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();

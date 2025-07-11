@@ -59,7 +59,7 @@ function goToHomePanel() {
 
 function checkCookies() {
     if (!isset($_COOKIE['dXNlcm5hbWVDb29raWU']) || !isset($_COOKIE['cGFzc3dvcmRDb29raWU'])) {
-        include('/home/agsty/Programming/2sys/index.html');
+        include('http://localhost/index.html');
         die();
     }
 }

@@ -8,7 +8,7 @@ $retrieveHash->bind_param('s', $user);
 
 //Check statement validity
 if (!$retrieveHash) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_hash_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
@@ -22,7 +22,7 @@ $retrieveHash->fetch();
 echo $user . "<br>" . $pass . "<br>" . $hashedPass;
 
 if (!isset($hashedPass)) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Incorrect login details! name');
     die(); //Die, as this is more likely to be an issue with setup
     //or if the user exists, not a bug or connection issue with phpMA or mySQL. 
@@ -33,7 +33,7 @@ $retrieveHash->close(); //Close, as we will need another query later in this scr
 //Check the password.
 $userVerified = password_verify($pass, $hashedPass);
 if (!$userVerified) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Incorrect login details!');
     die(); //Wrong password - unlucky mate! Go try again why don't you
     //We use the exact same 'fail' message in both cases - 
@@ -53,7 +53,7 @@ $retrieveUserID->bind_param('s', $user);
 //This is safe as we have VERIFIED the username AND its password.
 
 if (!$retrieveUserID) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_uid_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();
@@ -70,7 +70,7 @@ $readAccessLevel = $connection->prepare('SELECT `AccessLevel` FROM `Accounts` WH
 $readAccessLevel->bind_param('i', $userID); //Note - binding an INT this time as that is what UserID is stored as.
 
 if (!$readAccessLevel) {
-    include('/home/agsty/Programming/2sys/index.html');
+    include('http://localhost/index.html');
     echo('<br>Error with prepared statement! error{retrieve_access_level_failed}'); //use an error{} flag - this helps to debug
     //AND avoids exposing PHP errors to frontend.
     die();

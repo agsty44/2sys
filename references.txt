@@ -15,7 +15,7 @@ dXNlcm5hbWVDb29raWU - the username cookie
 cGFzc3dvcmRDb29raWU - password cookie
 
 --- IMPORTANT DIRECTORIES ---
-/home/agsty/Programming/2sys/ - the webroot. home to all the project files. :D
+http://localhost/ - the webroot. home to all the project files. :D
 ./Admin - the admin panel
 ./Parents - the parent panel
 ./Students - the student panel
